@@ -26,7 +26,6 @@ def get_absolute_paths(num_mark: int, folder_name: str) -> List[str]:
     return absolute_paths
 
 
-
 def get_relative_paths(num_mark: int, folder_name: str) -> List[str]:
     """
     The function gets absolute paths to files and returns a list with relative paths
@@ -44,6 +43,7 @@ def get_relative_paths(num_mark: int, folder_name: str) -> List[str]:
     for name in names:
         relative_paths.append(os.path.join(class_path, name))
     return relative_paths
+
 
 def make_csv(folder_name: str) -> None:
     """
