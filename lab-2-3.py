@@ -43,4 +43,14 @@ def rename(new_folder_name: str) -> dict:
         os.chdir('..')
     return class_nums
 
+def move_dataset(old_folder_name: str, new_folder_name: str) -> None:
+    """The function copies files to a new directory
+
+    Args:
+        old_folder_name (str): path to source directory
+        new_folder_name (str): path to destination directory
+    """
+    old_path = os.path.relpath(f'{old_folder_name}')
+    new_path = os.path.relpath(f'{new_folder_name}')
+    shutil.copytree(old_path, new_path)
 
