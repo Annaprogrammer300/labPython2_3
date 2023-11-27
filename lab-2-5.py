@@ -33,3 +33,13 @@ class Iterator:
         else:
             raise StopIteration
 
+
+def main() -> None:
+    class_5 = Iterator("5")
+
+    for i in range(1000):
+        print(next(class_5))
+
+
+if __name__ == '__main__':
+    main()

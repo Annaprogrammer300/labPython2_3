@@ -24,3 +24,10 @@ def next(num_class: str) -> Optional[str]:
         else:
             yield None
 
+
+def main() -> None:
+    print(*next('1'))
+
+
+if __name__ == '__main__':
+    main()

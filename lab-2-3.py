@@ -43,6 +43,7 @@ def rename(new_folder_name: str) -> dict:
         os.chdir('..')
     return class_nums
 
+
 def move_dataset(old_folder_name: str, new_folder_name: str) -> None:
     """The function copies files to a new directory
 
@@ -54,3 +55,36 @@ def move_dataset(old_folder_name: str, new_folder_name: str) -> None:
     new_path = os.path.relpath(f'{new_folder_name}')
     shutil.copytree(old_path, new_path)
 
+
+def make_csv_random(new_folder_name: str, class_number: dict) -> None:
+    """The function writes data to a csv file in the following format: absolute path, relative path, class label
+
+    Args:
+        new_folder_name (str): path to destination directory
+        class_number (dict): key - file path, value - class label
+    """
+    bar = IncrementalBar(f'Writting csv', max=5000)
+    work_catalog = os.getcwd()
+    os.chdir(new_folder_name)
+    names = os.listdir()
+    os.chdir(work_catalog)
+    f = open("paths3.csv", 'w')
+    writer = csv.writer(f, delimiter=',', lineterminator='\n')
+    for name in names:
+        absolute_path = os.path.abspath(new_folder_name)
+        absolute_path_file = os.path.join(absolute_path, name)
+        relative_path = os.path.relpath(f'{new_folder_name}')
+        relative_path_file = os.path.join(relative_path, name)
+        name = name.replace('.txt', '')
+        writer.writerow(
+            [absolute_path_file, relative_path_file, class_number[int(name)]])
+        bar.next()
+
+
+def main() -> None:
+    move_dataset('dataset', 'dataset3')
+    make_csv_random('dataset3', rename('dataset3'))
+
+
+if __name__ == '__main__':
+    main()
