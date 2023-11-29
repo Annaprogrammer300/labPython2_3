@@ -81,10 +81,6 @@ def make_csv_random(new_folder_name: str, class_number: dict) -> None:
         bar.next()
 
 
-def main() -> None:
-    move_dataset('dataset', 'dataset3')
-    make_csv_random('dataset3', rename('dataset3'))
-
-
-if __name__ == '__main__':
-    main()
+def main(old_folder_name: str, new_folder_name: str) -> None:
+    move_dataset(old_folder_name, new_folder_name)
+    make_csv_random(new_folder_name, rename(new_folder_name))

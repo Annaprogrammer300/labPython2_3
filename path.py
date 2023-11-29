@@ -63,9 +63,3 @@ def make_csv(folder_name: str) -> None:
             writer.writerow([absolute_path, relative_path, str(i)])
 
 
-def main() -> None:
-    make_csv('dataset')
-
-
-if __name__ == '__main__':
-    main()
